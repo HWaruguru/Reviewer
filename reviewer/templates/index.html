@@ -1,1 +1,32 @@
-<p>app</p>
+{%  extends 'base.html'%}
+{% block content %}
+{% load static %}
+{{ block.super}}
+<div class="container">
+    <div class="row">
+    
+        <div class="card-columns">
+            {% for project in projects %}
+            <div class="card">
+                <img class="card-img-top" src="{% static 'images/lamb.jpeg' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{project.title}}</h5>
+                  <p class="card-text">{{project.description}}</p>
+                  <a class="btn btn-primary" href="{{project.link}}" role="button">View</a>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">{{project.posted_by}}</small>
+                  <small class="text-muted">{{project.date}}</small>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+
+    </div>
+    
+    
+      
+</div>
+{% endblock %}
+
+

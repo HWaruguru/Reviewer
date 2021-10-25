@@ -8,9 +8,9 @@
         <div class="card-columns">
             {% for project in projects %}
             <div class="card">
+                <h5 class="card-title">{{project.title}}</h5>
                 <img class="card-img-top" src="{% static 'images/lamb.jpeg' %}" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">{{project.title}}</h5>
                   <p class="card-text">{{project.description}}</p>
                   <a class="btn btn-primary" href="{{project.link}}" role="button">View</a>
                 </div>

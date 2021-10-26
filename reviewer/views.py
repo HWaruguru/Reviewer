@@ -5,14 +5,23 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Project, Rating, Profile
-from .forms import ProjectForm, SignUpForm, UpdateUserForm, UpdateUserProfileForm
+from .forms import ProjectForm, SignUpForm, UpdateUserForm, UpdateUserProfileForm, RatingForm
 
 
 
 
 def index(request):
-     projects = Project.objects.all()
-     return render(request, 'index.html', {"projects":projects})
+    projects = Project.objects.all()
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = request.user
+            project.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = ProjectForm()
+    return render(request, 'index.html', {"projects": projects, "form": form})
 
 
 def signup(request):
@@ -52,3 +61,22 @@ def search_projects(request):
         if len(projects) > 0:
             return render(request, 'search_result.html', {"projects": projects})
     return redirect('index')
+
+@login_required(login_url='login')
+def rating(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    rated = False
+    if project.ratings.all().filter(user__id=request.user.id).first():
+        rated = True
+
+    if request.method == 'POST':
+        form = RatingForm(request.POST, request.FILES)
+        if form.is_valid():
+            rating = form.save(commit=False)
+            rating.user = request.user
+            rating.project = project
+            rating.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = RatingForm()
+    return render(request, 'rating.html', {"project": project, "form": form, "rated": rated })

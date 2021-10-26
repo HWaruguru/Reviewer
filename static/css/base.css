@@ -1,0 +1,17 @@
+.rating-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.rating-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.rate-title {
+   margin-top: 2rem;
+   font-weight: bold;
+}

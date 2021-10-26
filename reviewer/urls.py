@@ -22,6 +22,7 @@ urlpatterns=[
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^search/$', views.search_projects, name='search_projects'),
     url(r'^profile/$', views.profile, name='profile'),
+    url(r'^rating/(?P<project_id>\d+)/$', views.rating, name='rating'),
 ]
 
 if settings.DEBUG:

@@ -30,7 +30,7 @@ def signup(request):
 
 @login_required(login_url='login')
 def profile(request):
-    posts = request.user.profile.posts.all()
+    projects = request.user.projects.all()
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
         prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
@@ -42,4 +42,13 @@ def profile(request):
         user_form = UpdateUserForm(instance=request.user)
         prof_form = UpdateUserProfileForm(instance=request.user.profile)
 
-    return render(request, 'profile.html', {"posts": posts, 'user_form': user_form, 'prof_form': prof_form})
+    return render(request, 'profile.html', {"projects": projects, 'user_form': user_form, 'prof_form': prof_form})
+
+@login_required(login_url='login')
+def search_projects(request):
+    if 'title' in request.GET and request.GET['title']:
+        title = request.GET.get("title")
+        projects = Project.objects.filter(title__icontains=title)
+        if len(projects) > 0:
+            return render(request, 'search_result.html', {"projects": projects})
+    return redirect('index')

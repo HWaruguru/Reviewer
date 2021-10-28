@@ -17,42 +17,42 @@ class TestProfile(TestCase):
         self.user.delete()
 
 
-class PostTest(TestCase):
+class ProjectTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create(id=1, username='charles')
-        self.post = Post.objects.create(id=1, title='test post', photo='https://ucarecdn.com/0ccf61ff-508e-46c6-b713-db51daa6626e', description='desc',
+        self.user = User.objects.create(id=1, username='hannah')
+        self.project = Project.objects.create(id=1, title='test project', photo='https://ucarecdn.com/0ccf61ff-508e-46c6-b713-db51daa6626e', description='desc',
                                         user=self.user, url='http://ur.coml')
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.post, Post))
+        self.assertTrue(isinstance(self.project, Project))
 
-    def test_save_post(self):
-        self.post.save_post()
-        post = Post.objects.all()
-        self.assertTrue(len(post) > 0)
+    def test_save_project(self):
+        self.project.save_project()
+        project = Project.objects.all()
+        self.assertTrue(len(project) > 0)
 
-    def test_get_posts(self):
-        self.post.save()
-        posts = Post.all_posts()
-        self.assertTrue(len(posts) > 0)
+    def test_get_projects(self):
+        self.project.save()
+        projects = Project.all_projects()
+        self.assertTrue(len(projects) > 0)
 
-    def test_search_post(self):
-        self.post.save()
-        post = Post.search_project('test')
-        self.assertTrue(len(post) > 0)
+    def test_search_project(self):
+        self.project.save()
+        project = Project.search_project('test')
+        self.assertTrue(len(project) > 0)
 
-    def test_delete_post(self):
-        self.post.delete_post()
-        post = Post.search_project('test')
-        self.assertTrue(len(post) < 1)
+    def test_delete_project(self):
+        self.project.delete_project()
+        project = Project.search_project('test')
+        self.assertTrue(len(project) < 1)
 
 
 class RatingTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create(id=1, username='charles')
-        self.post = Post.objects.create(id=1, title='test post', photo='https://ucarecdn.com/0ccf61ff-508e-46c6-b713-db51daa6626e', description='desc',
+        self.user = User.objects.create(id=1, username='hannah')
+        self.post = Project.objects.create(id=1, title='test project', photo='https://ucarecdn.com/0ccf61ff-508e-46c6-b713-db51daa6626e', description='desc',
                                         user=self.user, url='http://ur.coml')
-        self.rating = Rating.objects.create(id=1, design=6, usability=7, content=9, user=self.user, post=self.post)
+        self.rating = Rating.objects.create(id=1, design=6, usability=7, content=9, user=self.user, project=self.post)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.rating, Rating))

@@ -60,9 +60,9 @@ python manage.py makemigrations reviewer
 Open the application on your browser `127.0.0.1:8000`.  
   
  ### Api Endpoints
- * https://reviewer.herokuapp.com/api/users/
- * https://reviewer.herokuapp.com/api/profile/
- * https://reviewer.herokuapp.com/api/posts/
+ * https://hanreviewer.herokuapp.com/api/project/
+ * https://hanreviewer.herokuapp.com/api/profile/
+ * https://git.heroku.com/hanreviewer.git
  
  
 ## Technology used  

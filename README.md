@@ -33,6 +33,9 @@ cd Reviewer pip install -r requirements.txt
  ```bash 
 - python3 -m venv virtual - source virtual/bin/activate  
 ```  
+```bash 
+- source virtual/bin/activate  
+```  
 ##### Install Dependencies  
  ```bash 
  pip install -r requirements.txt 
@@ -40,7 +43,7 @@ cd Reviewer pip install -r requirements.txt
  ##### Setup Database  
   SetUp your database User,Password, Host then make migrate  
  ```bash 
-python manage.py makemigrations instagram
+python manage.py makemigrations reviewer
  ``` 
  Now Migrate  
  ```bash 

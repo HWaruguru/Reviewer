@@ -11,6 +11,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from . import views
+from api import views as api_views
 
 urlpatterns=[
     url(r'^admin/', admin.site.urls),
@@ -23,7 +24,10 @@ urlpatterns=[
     url(r'^search/$', views.search_projects, name='search_projects'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^rating/(?P<project_id>\d+)/$', views.rating, name='rating'),
+    url(r'^api/profile/$', api_views.ProfileList.as_view()),
+    url(r'^api/project/$', api_views.ProjectList.as_view())
 ]
+
 
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

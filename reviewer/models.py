@@ -39,7 +39,7 @@ class Project(models.Model):
     url = models.URLField(max_length=255)
     description = models.TextField(max_length=500)
     photo = models.ImageField(upload_to='projects/', default='default.png')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="projects")
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="projects", null=True)
     
     def __str__(self):
         return f'{self.title}'

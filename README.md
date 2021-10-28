@@ -62,7 +62,7 @@ Open the application on your browser `127.0.0.1:8000`.
  ### Api Endpoints
  * https://hanreviewer.herokuapp.com/api/project/
  * https://hanreviewer.herokuapp.com/api/profile/
- * https://git.heroku.com/hanreviewer.git
+ * https://hanreviewer.herokuapp.com/
  
  
 ## Technology used  

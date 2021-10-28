@@ -31,10 +31,10 @@ cd Reviewer pip install -r requirements.txt
 ```
 ##### Install and activate Virtual  
  ```bash 
-- python3 -m venv virtual - source virtual/bin/activate  
+python3 -m venv virtual
 ```  
 ```bash 
-- source virtual/bin/activate  
+source virtual/bin/activate  
 ```  
 ##### Install Dependencies  
  ```bash 
@@ -68,7 +68,7 @@ Open the application on your browser `127.0.0.1:8000`.
 ## Technology used  
   
 * [Python3.9](https://www.python.org/)  
-* [Django 3.2.8](https://docs.djangoproject.com/en/3.2.8/)  
+* [Django 3.2.8](https://docs.djangoproject.com/en/3.2/)  
 * [Heroku](https://heroku.com)  
   
   
